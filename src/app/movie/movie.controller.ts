@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpCode,
+  HttpStatus,
   Param,
   ParseUUIDPipe,
   Patch,
@@ -42,7 +43,7 @@ export class MovieController {
   }
 
   @Delete(':id')
-  @HttpCode(204)
+  @HttpCode(HttpStatus.NO_CONTENT)
   async delete(@Param('id', new ParseUUIDPipe()) id: string): Promise<void> {
     await this.service.delete(id);
   }
