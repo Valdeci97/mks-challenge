@@ -18,6 +18,7 @@ import { MovieModule } from './app/movie/movie.module';
       database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/**.entity{.ts, .js}'],
       migrations: [__dirname + '../migrations/*{.ts, .js}'],
+      autoLoadEntities: true,
       synchronize: true, // Não utilizar isso em produção para evitar perder dados no banco de dados.
       logging: true,
     }),
