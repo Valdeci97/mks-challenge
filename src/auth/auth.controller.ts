@@ -8,8 +8,8 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { BadRequestSwagger } from 'src/app/swagger/exceptions/badRequest.swagger';
-import { SwaggerToken } from 'src/app/swagger/token.swagger';
+import { BadRequestSwagger } from '../app/swagger/exceptions/badRequest.swagger';
+import { SwaggerToken } from '../app/swagger/token.swagger';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
