@@ -33,4 +33,12 @@ export class User {
   async encryptPassword() {
     this.password = await hash(this.password, 10);
   }
+
+  constructor(user?: Partial<User>) {
+    this.id = user?.id;
+    this.name = user?.name;
+    this.email = user?.email;
+    this.password = user?.password;
+    this.createdAt = user?.createdAt;
+  }
 }
