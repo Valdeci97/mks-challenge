@@ -36,4 +36,14 @@ export class Movie {
   @UpdateDateColumn({ name: 'updated_at' })
   @ApiProperty()
   updatedAt: string;
+
+  constructor(movie?: Partial<Movie>) {
+    this.id = movie?.id;
+    this.name = movie?.name;
+    this.director = movie?.director;
+    this.releaseYear = movie?.releaseYear;
+    this.rating = movie?.rating;
+    this.createdAt = movie?.createdAt;
+    this.updatedAt = movie?.updatedAt;
+  }
 }
