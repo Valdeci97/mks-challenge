@@ -37,8 +37,14 @@ export class UsersController {
     description: 'Bad request',
     type: BadRequestSwagger,
   })
-  async save(@Body() body: CreateUserDto): Promise<User> {
-    return this.service.save(body);
+  async save(@Body() body: CreateUserDto): Promise<Partial<User>> {
+    const user = await this.service.save(body);
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt,
+    };
   }
 
   @Get()
