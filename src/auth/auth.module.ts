@@ -7,12 +7,13 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { UsersService } from 'src/app/users/users.service';
+import { MovieModule } from 'src/app/movie/movie.module';
 
 @Module({
   imports: [
     UsersModule,
     PassportModule,
+    MovieModule,
     JwtModule.register({
       privateKey: process.env.JWT_SECRET,
       signOptions: { expiresIn: '24h' },
