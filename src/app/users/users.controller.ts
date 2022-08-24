@@ -18,7 +18,6 @@ import { User } from './users.entity';
 import { UsersService } from './users.service';
 
 @Controller('users')
-@UseGuards(AuthGuard('jwt'))
 export class UsersController {
   constructor(private readonly service: UsersService) {}
   @Post()
@@ -27,16 +26,19 @@ export class UsersController {
   }
 
   @Get()
+  @UseGuards(AuthGuard('jwt'))
   async find(): Promise<User[]> {
     return this.service.find();
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard('jwt'))
   async findOne(@Param('id', new ParseUUIDPipe()) id: string): Promise<User> {
     return this.service.findOne(id);
   }
 
   @Patch(':id')
+  @UseGuards(AuthGuard('jwt'))
   async udpate(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() body: UpdateUserDto,
@@ -46,6 +48,7 @@ export class UsersController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
+  @UseGuards(AuthGuard('jwt'))
   async delete(@Param('id', new ParseUUIDPipe()) id: string): Promise<void> {
     await this.service.delete(id);
   }
