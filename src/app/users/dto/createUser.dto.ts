@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, Matches, Min } from 'class-validator';
+import { IsEmail, IsNotEmpty, Matches, MinLength } from 'class-validator';
 import { PASSWORD } from 'src/utils/password.utils';
 
 export class CreateUserDto {
@@ -10,7 +10,7 @@ export class CreateUserDto {
   email: string;
 
   @IsNotEmpty()
-  @Min(8)
+  @MinLength(8)
   @Matches(PASSWORD.REGEX, { message: PASSWORD.MESSAGE })
   password: string;
 }
