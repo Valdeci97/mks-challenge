@@ -9,13 +9,16 @@ import {
   ParseUUIDPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { SaveMovieDto } from './dto/saveMovie.dto';
 import { UpdateMovieDto } from './dto/updateMovie.dto';
 import { Movie } from './movie.entity';
 import { MovieService } from './movie.service';
 
 @Controller('movies')
+@UseGuards(AuthGuard('jwt'))
 export class MovieController {
   constructor(private readonly service: MovieService) {}
 
