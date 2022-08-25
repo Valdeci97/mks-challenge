@@ -21,7 +21,6 @@ import { AuthModule } from './auth/auth.module';
       entities: [__dirname + '/**/**.entity{.ts, .js}'],
       migrations: [__dirname + '../migrations/*{.ts, .js}'],
       autoLoadEntities: true,
-      synchronize: true, // Não utilizar isso em produção para evitar perder dados no banco de dados.
       logging: true,
     }),
     CacheModule.register({
